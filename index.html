@@ -102,7 +102,7 @@
         }
 
         .hero h1 {
-            font-size: 4.5rem;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: 1.5rem;
@@ -115,7 +115,7 @@
         }
 
         .hero p {
-            font-size: 1.4rem;
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
             max-width: 600px;
             margin-bottom: 2rem;
             color: var(--light-text);
@@ -163,7 +163,7 @@
         }
 
         .section-title h2 {
-            font-size: 2.8rem;
+            font-size: clamp(2rem, 4vw, 2.8rem);
             font-weight: 800;
             margin-bottom: 1rem;
             position: relative;
@@ -185,7 +185,7 @@
         .section-title p {
             max-width: 700px;
             margin: 1rem auto 0;
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2vw, 1.2rem);
             color: var(--light-text);
         }
 
@@ -197,13 +197,13 @@
         }
 
         .about-text h3 {
-            font-size: 2.2rem;
+            font-size: clamp(1.8rem, 3vw, 2.2rem);
             margin-bottom: 1.5rem;
         }
 
         .about-text p {
             margin-bottom: 1.5rem;
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 2vw, 1.1rem);
         }
 
         .about-image {
@@ -361,6 +361,43 @@
             box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
 
+        .contact-info {
+            background: var(--dark-blue);
+            color: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            height: 100%;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .contact-info h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: white;
+            border-radius: 3px;
+        }
+
+        .contact-item {
+            display: flex;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: var(--light-blue);
+        }
+
         /* Footer */
         footer {
             background-color: var(--dark-text);
@@ -466,13 +503,27 @@
             transform: translateY(0);
         }
 
+        /* Burger Animation */
+        .burger-animation {
+            display: inline-block;
+            animation: burgerSpin 4s ease-in-out infinite;
+        }
+
+        @keyframes burgerSpin {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(15deg); }
+            50% { transform: rotate(0deg); }
+            75% { transform: rotate(-15deg); }
+            100% { transform: rotate(0deg); }
+        }
+
         /* Responsive Design */
         @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 3.5rem;
+            .about-content {
+                flex-direction: column;
             }
             
-            .about-content {
+            .contact-row {
                 flex-direction: column;
             }
         }
@@ -482,28 +533,12 @@
                 padding: 6rem 0 3rem;
             }
             
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            
-            .hero p {
-                font-size: 1.2rem;
-            }
-            
             section {
                 padding: 5rem 0;
-            }
-            
-            .section-title h2 {
-                font-size: 2.3rem;
             }
         }
 
         @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 2.3rem;
-            }
-            
             .hero-btns .btn {
                 width: 100%;
                 margin-right: 0;
@@ -511,6 +546,10 @@
             
             .contact-form {
                 padding: 2rem 1.5rem;
+            }
+            
+            .navbar {
+                padding: 1rem;
             }
         }
     </style>
@@ -569,8 +608,11 @@
                 <div class="about-text">
                     <h3>Creating digital experiences that matter</h3>
                     <p>I'm a passionate web developer and designer with expertise in building responsive, user-friendly websites and applications. With a keen eye for design and a love for clean, efficient code, I bring ideas to life in the digital space.</p>
+                    
+                    <p>I'm a web developer, when I'm not coding, I'm eating 🍔<span class="burger-animation">🙂</span>. I've been coding for 3 years now and have delivered successful projects for clients worldwide.</p>
+                    
                     <p>My approach combines technical expertise with creative thinking to deliver solutions that not only look great but also perform exceptionally. I stay updated with the latest technologies and trends to ensure my work is modern and effective.</p>
-                    <p>When I'm not coding, you can find me exploring new design trends, contributing to open-source projects, or sharing knowledge with the developer community.</p>
+                    
                     <div class="mt-4">
                         <a href="#contact" class="btn btn-primary px-4 py-2">Get In Touch</a>
                     </div>
@@ -691,6 +733,16 @@
                         <a href="https://yolopark.store/optiq/pillsbury.php" target="_blank" class="btn btn-outline-primary">View Project</a>
                     </div>
                 </div>
+                <div class="project-card animate-on-scroll">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Burger Restaurant">
+                    </div>
+                    <div class="project-content">
+                        <h3>Biglows Burger</h3>
+                        <p>Delicious landing page for a premium burger restaurant with menu showcase and online ordering.</p>
+                        <a href="https://yolopark.store/restaurant/bb.php" target="_blank" class="btn btn-outline-primary">View Project</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -733,10 +785,10 @@
                 </div>
                 <div class="service-card animate-on-scroll">
                     <div class="service-icon">
-                        <i class="fas fa-search"></i>
+                        <i class="fas fa-plug"></i>
                     </div>
-                    <h3>SEO Optimization</h3>
-                    <p>Improve your website's visibility and ranking on search engines.</p>
+                    <h3>Third-Party Integration</h3>
+                    <p>Paystack, email systems, APIs, and other third-party services integration.</p>
                 </div>
                 <div class="service-card animate-on-scroll">
                     <div class="service-icon">
@@ -756,22 +808,22 @@
                 <h2>Get In Touch</h2>
                 <p>Let's work together</p>
             </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
+            <div class="row contact-row">
+                <div class="col-lg-7 mb-5 mb-lg-0">
                     <div class="contact-form animate-on-scroll">
                         <h3 class="text-center mb-4">Book a Service</h3>
-                        <form id="serviceForm">
+                        <form id="serviceForm" action="https://formspree.io/f/mzzvzdoe" method="POST">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="Your Name" required>
+                                    <input type="text" class="form-control" name="name" placeholder="Your Name" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="email" class="form-control" placeholder="Your Email" required>
+                                    <input type="email" class="form-control" name="email" placeholder="Your Email" required>
                                 </div>
                             </div>
-                            <input type="text" class="form-control" placeholder="Company (Optional)">
-                            <input type="tel" class="form-control" placeholder="Phone Number">
-                            <select class="form-control" required>
+                            <input type="text" class="form-control" name="company" placeholder="Company (Optional)">
+                            <input type="tel" class="form-control" name="phone" placeholder="Phone Number">
+                            <select class="form-control" name="service" required>
                                 <option value="" disabled selected>Select Service</option>
                                 <option value="landing">Landing Page</option>
                                 <option value="ecommerce">E-commerce Website</option>
@@ -782,12 +834,59 @@
                                 <option value="hosting">Web Hosting</option>
                                 <option value="seo">SEO Optimization</option>
                                 <option value="google">Google My Business</option>
+                                <option value="integration">Third-Party Integration</option>
                             </select>
-                            <textarea class="form-control" rows="5" placeholder="Project Details" required></textarea>
+                            <textarea class="form-control" name="details" rows="5" placeholder="Project Details" required></textarea>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary btn-lg px-5 py-3">Submit Request</button>
                             </div>
                         </form>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="contact-info animate-on-scroll">
+                        <h3>Contact Information</h3>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h5>Email</h5>
+                                <p>israelojeyemi@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h5>Call Only</h5>
+                                <p>07019704826</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h5>WhatsApp Only</h5>
+                                <p>09158071095</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-instagram"></i>
+                            </div>
+                            <div>
+                                <h5>Instagram</h5>
+                                <p>@israel_ojeyemi</p>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <h5>Service Hours</h5>
+                            <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                            <p>Saturday: 10:00 AM - 3:00 PM</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -828,6 +927,7 @@
                         <li><a href="#">Blog Development</a></li>
                         <li><a href="#">SEO Optimization</a></li>
                         <li><a href="#">Domain & Hosting</a></li>
+                        <li><a href="#">Third-Party Integration</a></li>
                     </ul>
                 </div>
             </div>
@@ -895,7 +995,11 @@
         // Form submission
         document.getElementById('serviceForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            
+            // Show success message
             alert('Thank you for your request! I will contact you soon to discuss your project.');
+            
+            // Reset form
             this.reset();
         });
     </script>
