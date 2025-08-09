@@ -3,104 +3,901 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ojeyemi Israel | Web Developer</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Ojeyemi Israel | Web Developer & Designer</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #2563eb;
+            --secondary-blue: #3b82f6;
+            --dark-blue: #1e40af;
+            --light-blue: #dbeafe;
+            --dark-text: #1f2937;
+            --light-text: #6b7280;
+            --bg-light: #f9fafb;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-text);
+            overflow-x: hidden;
+            background-color: #ffffff;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Navigation */
+        .navbar {
+            padding: 1.5rem 2rem;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            margin: 0 0.8rem;
+            position: relative;
+            color: var(--dark-text);
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--primary-blue);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover:after,
+        .nav-link.active:after {
+            width: 100%;
+        }
+
+        .navbar-toggler {
+            border: none;
+            outline: none;
+            box-shadow: none !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 0 5rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--dark-text);
+        }
+
+        .hero h1 span {
+            color: var(--primary-blue);
+            display: block;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            color: var(--light-text);
+        }
+
+        .hero-btns .btn {
+            margin-right: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-image {
+            position: relative;
+            z-index: 1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Animation Keyframes */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Section Styling */
+        section {
+            padding: 7rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 5rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-blue);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            max-width: 700px;
+            margin: 1rem auto 0;
+            font-size: 1.2rem;
+            color: var(--light-text);
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .about-text h3 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .about-image {
+            position: relative;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Skills Section */
+        .skills {
+            background-color: var(--bg-light);
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.1);
+        }
+
+        .skill-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-blue);
+        }
+
+        .skill-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            background: white;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+        }
+
+        .project-img {
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-img img {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 1.8rem;
+        }
+
+        .project-content h3 {
+            margin-bottom: 0.8rem;
+            font-size: 1.5rem;
+        }
+
+        .project-content p {
+            color: var(--light-text);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Services Section */
+        .services {
+            background-color: var(--light-blue);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-blue);
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+        }
+
+        /* Contact Section */
+        .contact-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-control {
+            padding: 1rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-text);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .footer-about {
+            flex: 1;
+            min-width: 300px;
+            margin-right: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links {
+            min-width: 150px;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
+        .footer-links h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary-blue);
+            border-radius: 3px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary-blue);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #9ca3af;
+        }
+
+        /* Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 6rem 0 3rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            section {
+                padding: 5rem 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2.3rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero-btns .btn {
+                width: 100%;
+                margin-right: 0;
+            }
+            
+            .contact-form {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav>
-            <h1 class="logo">Ojeyemi<span>Israel</span></h1>
-            <ul>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Israel<span class="text-dark">.dev</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Get a <span>Professional Website</span> Done for You</h1>
-            <p>I help Nigerian businesses go online fast with mobile-friendly sites that attract customers.</p>
-            <a href="#contact" class="cta-button">Get Started</a>
-        </div>
-        <div class="hero-image">
-            <img src="assets/ChatGPT Image Jun 1, 2025, 08_08_29 AM.png" alt="Web Development">
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <h1>Hi, I'm <span>Ojeyemi Israel</span></h1>
+                    <p>Web Developer & Designer crafting stunning digital experiences with cutting-edge technologies and creative solutions.</p>
+                    <div class="hero-btns">
+                        <a href="#projects" class="btn btn-primary btn-lg px-4 py-3">View My Work</a>
+                        <a href="#contact" class="btn btn-outline-dark btn-lg px-4 py-3">Hire Me</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 hero-image">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Web Developer" class="img-fluid">
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <h2>My Services</h2>
-        <div class="service-cards">
-            <div class="card">
-                <i class="fas fa-laptop-code"></i>
-                <h3>Starter Landing Page</h3>
-                <span>Starting From</span>
-                <p class="price">₦100,000</p>
-                <ul>
-                    <li>✅ 1 Custom Page</li>
-                    <li>✅ FREE Domain + Hosting (1st Year)</li>
-                    <li>✅ Mobile-Optimized</li>
-                </ul>
-                <a href="#contact" class="cta-button">Book Now</a>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+                <p>Get to know the person behind the code</p>
             </div>
-            <div class="card">
-                <i class="fas fa-globe"></i>
-                <h3>Business Website</h3>
-                <span>Starting From</span>
-                <p class="price">₦300,000</p>
-                <ul>
-                    <li>✅ 5-7 Pages</li>
-                    <li>✅ FREE Domain + Hosting + SSL</li>
-                    <li>✅ WhatsApp Integration</li>
-                </ul>
-                <a href="#contact" class="cta-button">Book Now</a>
+            <div class="about-content">
+                <div class="about-image animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ojeyemi Israel" class="img-fluid">
+                </div>
+                <div class="about-text">
+                    <h3>Creating digital experiences that matter</h3>
+                    <p>I'm a passionate web developer and designer with expertise in building responsive, user-friendly websites and applications. With a keen eye for design and a love for clean, efficient code, I bring ideas to life in the digital space.</p>
+                    <p>My approach combines technical expertise with creative thinking to deliver solutions that not only look great but also perform exceptionally. I stay updated with the latest technologies and trends to ensure my work is modern and effective.</p>
+                    <p>When I'm not coding, you can find me exploring new design trends, contributing to open-source projects, or sharing knowledge with the developer community.</p>
+                    <div class="mt-4">
+                        <a href="#contact" class="btn btn-primary px-4 py-2">Get In Touch</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Skills</h2>
+                <p>Technologies I work with</p>
+            </div>
+            <div class="skills-container">
+                <div class="skill-card animate-on-scroll">
+                    <div class="skill-icon">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <h3>HTML5</h3>
+                    <p>Semantic markup, accessibility, and modern structure techniques</p>
+                </div>
+                <div class="skill-card animate-on-scroll">
+                    <div class="skill-icon">
+                        <i class="fab fa-css3-alt"></i>
+                    </div>
+                    <h3>CSS3</h3>
+                    <p>Responsive design, animations, Flexbox, Grid, and preprocessors</p>
+                </div>
+                <div class="skill-card animate-on-scroll">
+                    <div class="skill-icon">
+                        <i class="fab fa-js"></i>
+                    </div>
+                    <h3>JavaScript</h3>
+                    <p>Modern ES6+, DOM manipulation, and interactive web experiences</p>
+                </div>
+                <div class="skill-card animate-on-scroll">
+                    <div class="skill-icon">
+                        <i class="fab fa-bootstrap"></i>
+                    </div>
+                    <h3>Bootstrap</h3>
+                    <p>Rapid development of responsive, mobile-first websites</p>
+                </div>
+                <div class="skill-card animate-on-scroll">
+                    <div class="skill-icon">
+                        <i class="fab fa-php"></i>
+                    </div>
+                    <h3>PHP</h3>
+                    <p>Server-side scripting, dynamic content, and backend logic</p>
+                </div>
+                <div class="skill-card animate-on-scroll">
+                    <div class="skill-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>MySQL</h3>
+                    <p>Database design, management, and complex query optimization</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
     <section id="projects" class="projects">
-        <h2>My Projects</h2>
-        <div class="project-grid">
-            <div class="project-card">
-                <img src="assets/yoloparkstore.jpg" alt="Bella's Bakery">
-                <h3>Bella's Bakery</h3>
-                <p>Landing page for a local bakery.</p>
-                <a href="#" class="demo-button">View Demo</a>
+        <div class="container">
+            <div class="section-title">
+                <h2>My Projects</h2>
+                <p>Some of my recent work</p>
             </div>
-            <div class="project-card">
-                <img src="assets/Minimalist Website Launch Computer Mockup Instagram Post.png" alt="Tech Gadgets">
-                <h3>Tech Gadgets</h3>
-                <p>E-commerce store for electronics.</p>
-                <a href="#" class="demo-button">View Demo</a>
+            <div class="projects-grid">
+                <div class="project-card animate-on-scroll">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Infinity Watches">
+                    </div>
+                    <div class="project-content">
+                        <h3>Infinity Watches</h3>
+                        <p>Full e-commerce solution with secure payment processing, product management, and customer accounts.</p>
+                        <a href="https://www.infiniwatches.store" target="_blank" class="btn btn-outline-primary">View Project</a>
+                    </div>
+                </div>
+                <div class="project-card animate-on-scroll">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1517244683847-7456b63c5969?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Food Brand">
+                    </div>
+                    <div class="project-content">
+                        <h3>YoloPark Restaurant</h3>
+                        <p>Modern landing page for a premium restaurant brand featuring menu showcase and reservation system.</p>
+                        <a href="https://yolopark.store/restaurant/" target="_blank" class="btn btn-outline-primary">View Project</a>
+                    </div>
+                </div>
+                <div class="project-card animate-on-scroll">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="AI Platform">
+                    </div>
+                    <div class="project-content">
+                        <h3>YoloPark AI</h3>
+                        <p>Landing page for an AI platform with interactive demos, feature showcases, and subscription options.</p>
+                        <a href="https://yolopark.store/" target="_blank" class="btn btn-outline-primary">View Project</a>
+                    </div>
+                </div>
+                <div class="project-card animate-on-scroll">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Law Firm">
+                    </div>
+                    <div class="project-content">
+                        <h3>BSK Law Firm</h3>
+                        <p>Professional website for a legal practice with attorney profiles, case studies, and consultation booking.</p>
+                        <a href="https://yolopark.store/optiq/bsk" target="_blank" class="btn btn-outline-primary">View Project</a>
+                    </div>
+                </div>
+                <div class="project-card animate-on-scroll">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1589391886645-d51941baf7fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Law Firm">
+                    </div>
+                    <div class="project-content">
+                        <h3>Pillsbury Law Firm</h3>
+                        <p>Corporate legal website featuring practice areas, client resources, and news updates.</p>
+                        <a href="https://yolopark.store/optiq/pillsbury.php" target="_blank" class="btn btn-outline-primary">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Services</h2>
+                <p>What I can do for you</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Custom websites and applications built with modern technologies and best practices.</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>E-commerce Solutions</h3>
+                    <p>Online stores with secure payment processing, inventory management, and user accounts.</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-blog"></i>
+                    </div>
+                    <h3>Blog Development</h3>
+                    <p>Content management systems optimized for SEO and reader engagement.</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Landing Pages</h3>
+                    <p>High-converting landing pages designed to capture leads and drive sales.</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>SEO Optimization</h3>
+                    <p>Improve your website's visibility and ranking on search engines.</p>
+                </div>
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Domain & Hosting</h3>
+                    <p>Domain registration, web hosting setup, and ongoing maintenance.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
-        <h2>Ready to Start?</h2>
-        <p>Book a FREE 10-minute call to discuss your project.</p>
-        <div class="contact-buttons">
-            <a href="https://wa.me/2349158071095" class="whatsapp-button">
-                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
-            </a>
-            <a href="#" class="email-button">
-                <i class="fas fa-envelope"></i> Send Email
-            </a>
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+                <p>Let's work together</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact-form animate-on-scroll">
+                        <h3 class="text-center mb-4">Book a Service</h3>
+                        <form id="serviceForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Your Name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control" placeholder="Your Email" required>
+                                </div>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Company (Optional)">
+                            <input type="tel" class="form-control" placeholder="Phone Number">
+                            <select class="form-control" required>
+                                <option value="" disabled selected>Select Service</option>
+                                <option value="landing">Landing Page</option>
+                                <option value="ecommerce">E-commerce Website</option>
+                                <option value="blog">Blog Website</option>
+                                <option value="custom">Custom Website</option>
+                                <option value="sales">Sales Page</option>
+                                <option value="domain">Domain Registration</option>
+                                <option value="hosting">Web Hosting</option>
+                                <option value="seo">SEO Optimization</option>
+                                <option value="google">Google My Business</option>
+                            </select>
+                            <textarea class="form-control" rows="5" placeholder="Project Details" required></textarea>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-lg px-5 py-3">Submit Request</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Ojeyemi Israel. All rights reserved.</p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3 class="mb-3">Ojeyemi Israel</h3>
+                    <p>Creating exceptional digital experiences with a focus on user-centered design and cutting-edge development techniques.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/israel_ojeyemi" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="mailto:israelojeyemi@gmail.com"><i class="fas fa-envelope"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">E-commerce</a></li>
+                        <li><a href="#">Landing Pages</a></li>
+                        <li><a href="#">Blog Development</a></li>
+                        <li><a href="#">SEO Optimization</a></li>
+                        <li><a href="#">Domain & Hosting</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Ojeyemi Israel. All Rights Reserved.</p>
+            </div>
+        </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu when a link is clicked
+                const navbarCollapse = document.getElementById('navbarNav');
+                if (navbarCollapse.classList.contains('show')) {
+                    new bootstrap.Collapse(navbarCollapse).toggle();
+                }
+            });
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.padding = '1rem 2rem';
+                navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.padding = '1.5rem 2rem';
+                navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+            }
+        });
+
+        // Animation on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+
+        // Form submission
+        document.getElementById('serviceForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your request! I will contact you soon to discuss your project.');
+            this.reset();
+        });
+    </script>
 </body>
 </html>
