@@ -39,16 +39,17 @@
         }
 
         /* Header & Navigation */
+        
         header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 20px 0;
-            transition: var(--transition);
-            background-color: rgba(247, 249, 252, 0.95);
-            backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 20px 0;
+    transition: var(--transition);
+    background-color: rgba(247, 249, 252, 0.95);
+    backdrop-filter: blur(10px);
         }
 
         header.scrolled {
@@ -140,13 +141,16 @@
             transform: translateY(-3px);
         }
 
-        .mobile-menu-btn {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--dark);
-        }
-
+        
+.mobile-menu-btn {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--dark);
+    z-index: 1002; /* ADDED: Ensure button is clickable */
+    position: relative; /* ADDED: For proper z-index stacking */
+}
+        
         /* Hero Section */
         .hero {
             padding: 160px 0 100px;
@@ -674,21 +678,21 @@
                 animation: fadeInDown 0.8s forwards 0.8s;
             }
 
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: 0;
-                width: 100%;
-                background-color: white;
-                flex-direction: column;
-                align-items: center;
-                padding: 30px 0;
-                gap: 25px;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-                transform: translateY(-100%);
-                opacity: 0;
-                transition: var(--transition);
-                z-index: 999;
+            nav-links {
+    position: fixed;
+    top: 80px; /* Changed from top: 80px to account for header height */
+    left: 0;
+    width: 100%;
+    background-color: white;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0;
+    gap: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: var(--transition);
+    z-index: 1001; /* CHANGED: Increased z-index to be above header */
             }
 
             .nav-links.active {
@@ -707,6 +711,13 @@
             .contact-container {
                 padding: 40px 30px;
             }
+    .social-icons {
+        display: none; /* Hide social icons on mobile */
+    }
+    
+    .navbar {
+        justify-content: space-between;
+    }
         }
 
         @media (max-width: 576px) {
@@ -1055,6 +1066,19 @@
                 }
             });
         });
+        function updateMobileMenuPosition() {
+    const header = document.getElementById('header');
+    const navLinks = document.getElementById('navLinks');
+    
+    if (window.innerWidth <= 768) {
+        const headerHeight = header.offsetHeight;
+        navLinks.style.top = headerHeight + 'px';
+    }
+}
+
+// Call on load and resize
+window.addEventListener('load', updateMobileMenuPosition);
+window.addEventListener('resize', updateMobileMenuPosition);
         
         // Animate elements on scroll
         const observerOptions = {
