@@ -670,47 +670,50 @@
             }
         }
 
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-                opacity: 0;
-                transform: translateY(-20px);
-                animation: fadeInDown 0.8s forwards 0.8s;
-            }
+      @media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+        opacity: 0;
+        transform: translateY(-20px);
+        animation: fadeInDown 0.8s forwards 0.8s;
+    }
 
-            nav-links {
-    position: fixed;
-    top: 80px; /* Changed from top: 80px to account for header height */
-    left: 0;
-    width: 100%;
-    background-color: white;
-    flex-direction: column;
-    align-items: center;
-    padding: 30px 0;
-    gap: 25px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transform: translateY(-100%);
-    opacity: 0;
-    transition: var(--transition);
-    z-index: 1001; /* CHANGED: Increased z-index to be above header */
-            }
+    .nav-links {
+        display: none; /* ADD THIS: Hide by default on mobile */
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 0;
+        gap: 25px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transform: translateY(-100%);
+        opacity: 0;
+        transition: var(--transition);
+        z-index: 1001;
+    }
 
-            .nav-links.active {
-                transform: translateY(0);
-                opacity: 1;
-            }
+    .nav-links.active {
+        display: flex; /* ADD THIS: Show when active */
+        transform: translateY(0);
+        opacity: 1;
+    }
 
-            .hero h1 {
-                font-size: 2.3rem;
-            }
+    .hero h1 {
+        font-size: 2.3rem;
+    }
 
-            .hero p {
-                font-size: 1.1rem;
-            }
+    .hero p {
+        font-size: 1.1rem;
+    }
 
-            .contact-container {
-                padding: 40px 30px;
-            }
+    .contact-container {
+        padding: 40px 30px;
+    }
+    
     .social-icons {
         display: none; /* Hide social icons on mobile */
     }
@@ -718,8 +721,7 @@
     .navbar {
         justify-content: space-between;
     }
-        }
-
+}
         @media (max-width: 576px) {
             .hero {
                 padding: 140px 0 80px;
