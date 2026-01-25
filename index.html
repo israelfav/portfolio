@@ -989,7 +989,8 @@
         videoItems.forEach(item => {
             item.addEventListener('click', () => {
                 const videoId = item.getAttribute('data-video-id');
-                youtubeVideo.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                
+                youtubeVideo.src = `https://youtube.com/shorts/${videoId}?feature=videoId`;
                 videoModal.classList.add('active');
                 document.body.style.overflow = 'hidden';
             });
